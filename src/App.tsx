@@ -25,7 +25,9 @@ function App() {
       }}>Lose Win</div>
       <Drawing />
       <Word />
-      <Keyboard />
+      <div style={{ alignSelf: 'stretch' }}>
+        <Keyboard />
+      </div>
     </div>
   )
 }
