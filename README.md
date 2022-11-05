@@ -1,1 +1,2 @@
-# React/TypeScript practice - Guess-the-word game, a.k.a. "Hangman"
+# React/TypeScript practice - Guess-the-word game
+All code was authored by [Web Dev Simplified](https://github.com/WebDevSimplified). Original code repository can be found [here](https://github.com/WebDevSimplified/react-hangman). The code-along video can be found on [YouTube](https://www.youtube.com/watch?v=-ONUyenGnWw&t=194s).
