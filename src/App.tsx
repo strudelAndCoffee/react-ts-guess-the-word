@@ -1,4 +1,7 @@
 import { useState } from "react"
+import { Drawing } from "./Drawing"
+import { Keyboard } from "./Keyboard"
+import { Word } from "./Word"
 import words from './wordList.json'
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
         fontSize: '2rem',
         textAlign: 'center'
       }}>Lose Win</div>
+      <Drawing />
+      <Word />
+      <Keyboard />
     </div>
   )
 }
