@@ -1,6 +1,9 @@
-export function Word() {
-    const word = "test"
-    const guessedLetters = ["t"]
+type WordProps = {
+    guessedLetters: string[]
+    wordToGuess: string
+}
+
+export function Word({ guessedLetters, wordToGuess }: WordProps) {
     return <div style={{
         display: 'flex',
         gap: '.25em',
@@ -9,7 +12,7 @@ export function Word() {
         textTransform: 'uppercase',
         fontFamily: 'monospace'
     }}>
-        {word.split('').map((letter, index) => (
+        {wordToGuess.split('').map((letter, index) => (
             <span style={{ borderBottom: '.1em solid black' }}>
                 <span
                     style={{ visibility: guessedLetters.includes(letter) ? 'visible' : 'hidden' }} key={index}
