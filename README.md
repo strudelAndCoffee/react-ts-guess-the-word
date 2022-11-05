@@ -1,0 +1,1 @@
+# React/TypeScript practice - Guess-the-word game, a.k.a. "Hangman"
