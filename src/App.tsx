@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Drawing } from "./Drawing"
 import { Keyboard } from "./Keyboard"
 import { Word } from "./Word"
@@ -14,10 +14,10 @@ function App() {
     letter => !wordToGuess.includes(letter)
   )
 
-  function addGuessedLetter(letter: string) {
+  const addGuessedLetter = useCallback(( letter: string ) => {
     if (guessedLetters.includes(letter)) return
     setGuessedLetters(currentLetters => [...currentLetters, letter])
-  }
+  }, [guessedLetters])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -31,7 +31,7 @@ function App() {
     return () => {
       document.removeEventListener('keypress', handler)
     }
-  }, [])
+  }, [guessedLetters])
 
   return (
     <div style={{
