@@ -4,10 +4,12 @@ import { Keyboard } from "./Keyboard"
 import { Word } from "./Word"
 import words from './wordList.json'
 
+function getWord() {
+  return words[Math.floor(Math.random() * words.length)]
+}
+
 function App() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
-    return words[Math.floor(Math.random() * words.length)]
-  })
+  const [wordToGuess, setWordToGuess] = useState(getWord)
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
   const incorrectLetters = guessedLetters.filter(
@@ -35,6 +37,21 @@ function App() {
     }
   }, [guessedLetters])
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const key = e.key
+      if (key !== 'Enter') return
+
+      e.preventDefault()
+      setGuessedLetters([])
+      setWordToGuess(getWord())
+    }
+    document.addEventListener('keypress', handler)
+    return () => {
+      document.removeEventListener('keypress', handler)
+    }
+  }, [])
+
   return (
     <div style={{
       maxWidth: '800px',
@@ -48,8 +65,8 @@ function App() {
         fontSize: '2rem',
         textAlign: 'center'
       }}>
-        {isWinner && "You Win!!! - Refresh to try again."}
-        {isLoser && "Good Effort - Refresh to try again."}
+        {isWinner && "You Win!!! - Press Enter to try again."}
+        {isLoser && "Good Effort - Press Enter to try again."}
       </div>
       <Drawing numberOfGuesses={incorrectLetters.length} />
       <Word 
